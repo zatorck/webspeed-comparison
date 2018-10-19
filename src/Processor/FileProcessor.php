@@ -33,7 +33,7 @@ class FileProcessor
     public function logResultsToFile(array $results): void
     {
         $projectDir = $this->params->get('kernel.project_dir');
-        $folder = '/public/';
+        $folder = '/public_html/';
         $fileName = 'log.txt';
         $path = sprintf('%s%s%s', $projectDir, $folder, $fileName);
 
