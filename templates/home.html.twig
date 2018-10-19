@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <form action="{{ path('analyze') }}" method="POST">
+        <div class="row ">
+            <div class="col"><h1>Webspeed Comparison</h1>
+            </div>
+            <div class="col text-right pt-2">
+                <button type="submit" class="btn btn-primary">Analyze!</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="mainUrl">Type your url *</label>
+            <input type="url" class="form-control" id="mainUrl" name="main" required>
+        </div>
+
+        <div class="form-group">
+            <label for="mainUrl">Type your email *</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="mainUrl">Type your phone number *</label>
+            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required>
+        </div>
+
+        <div class="form-group">
+            <label for="additionalUrl">Add url to compare</label>
+            <input type="url" class="form-control" id="additionalUrl">
+            <div>
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Add to compare</button>
+            </div>
+        </div>
+
+        <input type="hidden" name="additionalUrls" id="additionalUrls">
+
+        <h3>Currently added to compare</h3>
+        <ol id="currently-added">
+        </ol>
+    </form>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $('form').validate();
+        $('#button-addon2').click(function () {
+            var val = $('#additionalUrl').val();
+
+            if (val == '') {
+                alert('Type url to compare');
+                return;
+            }
+            $('#additionalUrl').validate();
+            if (!$('#additionalUrl').valid()) {
+                return;
+            }
+            var additionalUrls = $('#additionalUrls').val();
+            if (additionalUrls.includes(val)) {
+                alert('Url is already added');
+            } else {
+                $('#additionalUrls').val(additionalUrls + val + '_-_-_');
+                $('#currently-added').append('<li>' + val + ' <a href="#" class="delete-url" data-url="' + val + '">[X]</a></li>');
+
+            }
+            $('#additionalUrl').val('');
+
+        });
+
+        $('body').on('click', '.delete-url', function () {
+            var val = $(this).data('url') + '_-_-_';
+            var additionalUrls = $('#additionalUrls').val();
+            $('#additionalUrls').val(additionalUrls.replace(val, ''));
+            $(this).parent().remove();
+        });
+    </script>
+{% endblock %}
