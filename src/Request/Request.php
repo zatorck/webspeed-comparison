@@ -11,6 +11,11 @@ namespace App\Request;
 
 use GuzzleHttp\Client;
 
+/**
+ * Class Request
+ *
+ * @package App\Request
+ */
 class Request
 {
 

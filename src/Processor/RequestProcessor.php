@@ -14,6 +14,11 @@ use App\Request\Request as AppRequest;
 use GuzzleHttp\TransferStats;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+/**
+ * Class RequestProcessor
+ *
+ * @package App\Processor
+ */
 class RequestProcessor
 {
     /**

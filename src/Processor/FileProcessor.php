@@ -10,6 +10,11 @@ namespace App\Processor;
 
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
+/**
+ * Class FileProcessor
+ *
+ * @package App\Processor
+ */
 class FileProcessor
 {
     /**
