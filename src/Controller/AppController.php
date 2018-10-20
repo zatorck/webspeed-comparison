@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AppController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/", name="home", methods={"GET"})
      */
     public function home()
     {
@@ -25,7 +25,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/analyze", name="analyze")
+     * @Route("/analyze", name="analyze", methods={"POST"})
      */
     public function analyze(
             RequestProcessor $requestProcessor,
