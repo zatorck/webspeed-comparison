@@ -5,6 +5,7 @@
 /public_html/log.txt
 /var/
 /vendor/
+/.idea
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
